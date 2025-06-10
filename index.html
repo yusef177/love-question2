@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DO you love me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-size: 16px;
+        }
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            width: 100%;
+            max-width: 200px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #noButton {
+            background-color: #ff4444;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        #noButton:hover {
+            background-color: #cc0000;
+        }
+        #message {
+            display: none;
+            font-size: 1.5rem;
+            color: #4CAF50;
+            margin-top: 20px;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 1rem;
+                max-width: 150px;
+            }
+            #message {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Do you love me?</h1>
+    <div class="buttons">
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+    <div id="message"></div>
+    <script>
+        const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+        const message = document.getElementById('message');
+
+        // Make "No" button move on hover or touch
+        noButton.addEventListener('mouseover', moveButton);
+        noButton.addEventListener('touchstart', moveButton);
+
+        function moveButton() {
+            const maxX = window.innerWidth - noButton.offsetWidth;
+            const maxY = window.innerHeight - noButton.offsetHeight;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            noButton.style.transform = `translate(${newX}px, ${newY}px)`;
+        }
+
+        // Show message when "Yes" is clicked
+        yesButton.addEventListener('click', () => {
+            message.style.display = 'block';
+            message.textContent = 'I LOVE YOU TOOOO! 😊';
+            noButton.style.display = 'none';
+            yesButton.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
