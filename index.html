@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DO you love me?</title>
+    <title>Do you love me?</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,35 +13,39 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #000000; /* خلفية سودا */
             font-size: 16px;
         }
         h1 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #ffffff; /* نص بيضا */
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3); /* ظل خفيف بيضا */
+            margin-bottom: 30px;
         }
         .buttons {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
         button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 18px 35px;
+            font-size: 1.3rem;
             cursor: pointer;
             border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
+            border-radius: 10px;
+            color: #ffffff; /* نص الأزرار بيضا */
             width: 100%;
-            max-width: 200px;
+            max-width: 220px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* ظل بيضا */
         }
-        button:hover {
+        #yesButton {
+            background-color: #4CAF50; /* أخضر غامق */
+        }
+        #yesButton:hover {
             background-color: #45a049;
         }
         #noButton {
-            background-color: #ff4444;
+            background-color: #ff4444; /* أحمر غامق */
             position: relative;
             transition: transform 0.2s;
         }
@@ -50,28 +54,29 @@
         }
         #message {
             display: none;
-            font-size: 1.5rem;
-            color: #4CAF50;
+            font-size: 1.8rem;
+            color: #ffffff; /* رسالة بيضا */
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
             margin-top: 20px;
             text-align: center;
         }
         @media (max-width: 600px) {
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             button {
-                padding: 10px 20px;
-                font-size: 1rem;
-                max-width: 150px;
+                padding: 12px 25px;
+                font-size: 1.1rem;
+                max-width: 180px;
             }
             #message {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Do you love me?</h1>
+    <h1>Do you love سوفي?</h1>
     <div class="buttons">
         <button id="yesButton">Yes</button>
         <button id="noButton">No</button>
@@ -82,22 +87,24 @@
         const yesButton = document.getElementById('yesButton');
         const message = document.getElementById('message');
 
-        // Make "No" button move on hover or touch
+        // تحديد حدود الحركة بمسافة أقرب
         noButton.addEventListener('mouseover', moveButton);
         noButton.addEventListener('touchstart', moveButton);
 
         function moveButton() {
-            const maxX = window.innerWidth - noButton.offsetWidth;
-            const maxY = window.innerHeight - noButton.offsetHeight;
-            const newX = Math.random() * maxX;
-            const newY = Math.random() * maxY;
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+            const maxX = window.innerWidth - buttonWidth - 50; // مسافة أقرب (50 بكسل من الحافة)
+            const maxY = window.innerHeight - buttonHeight - 50;
+            const newX = Math.random() * (maxX / 2) + (buttonWidth / 2); // نص المسافة فقط
+            const newY = Math.random() * (maxY / 2) + (buttonHeight / 2); // نص المسافة فقط
             noButton.style.transform = `translate(${newX}px, ${newY}px)`;
         }
 
-        // Show message when "Yes" is clicked
+        // عرض الرسالة لما يضغط "Yes"
         yesButton.addEventListener('click', () => {
             message.style.display = 'block';
-            message.textContent = 'I LOVE YOU TOOOO! 😊';
+            message.textContent = 'I love you too! 😊';
             noButton.style.display = 'none';
             yesButton.style.display = 'none';
         });
